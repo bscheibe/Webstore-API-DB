@@ -1,0 +1,4 @@
+npm install -g npm-check-updates
+ncu -u
+ng update @angular/cli
+npm install
