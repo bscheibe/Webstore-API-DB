@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   googleLogin = () => {
-    // window.location.href = 'http://localhost:3000/api/auth/google-login';
+    window.location.href = 'http://localhost:3000/api/auth/google-login';
     this._secSvc.googleLogin();
   }
 }

@@ -11,6 +11,8 @@ node index.js
 // 3. Open postman and run this get request
 localhost:3001/api/test
 
+It wil 
+
 // In case you run into angular issues.
 npm install -g npm-check-updates
 ncu -u
