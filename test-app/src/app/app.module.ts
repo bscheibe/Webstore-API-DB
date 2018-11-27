@@ -5,8 +5,6 @@ import { SecurityModule } from './security/security.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
-import { SecureComponent } from './views/secure/secure.component';
-import { AdminComponent } from './views/admin/admin.component';
 import { ClothesComponent } from './views/clothes/clothes.component';
 import { AccessoriesComponent } from './views/accessories/accessories.component';
 import { SuppliesComponent } from './views/supplies/supplies.component';
@@ -15,8 +13,6 @@ import { SuppliesComponent } from './views/supplies/supplies.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    SecureComponent,
-    AdminComponent,
     ClothesComponent,
     AccessoriesComponent,
     SuppliesComponent
