@@ -1,5 +1,5 @@
 const AuthenticationController = require('./controllers/authentication'),  
-const ProductController = require('./controllers/product'),
+const StorageController = require('./controllers/storage'),
       express = require('express'),
       passportService = require('./security/passport');
      
@@ -17,10 +17,10 @@ module.exports = function(app) {
     // /api/auth/authorize
     authRoutes.get('/authorize',passportService.requireAuth,AuthenticationController.authorize);
     // Our added routes for each catagory.
-    apiRoutes.get('/clothing', ProductController.clothing);
-    apiRoutes.get('/accessories', ProductController.accessories);
-    apiRoutes.get('/supplies', ProductController.supplies);
-    apiRoutes.get('/test', ProductController.test);
+    apiRoutes.get('/clothing', StorageController.clothing);
+    apiRoutes.get('/accessories', StorageController.accessories);
+    apiRoutes.get('/supplies', StorageController.supplies);
+    apiRoutes.get('/test', StorageController.test);
 
     otherRoutes.get('/info',passportService.requireAuth,function(req,res,next){
         res.json({user: req.user.toJson()})});
