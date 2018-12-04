@@ -1,4 +1,4 @@
-const mogoose = require('mongoose'),
+const mongoose = require('mongoose'),
 Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
@@ -23,13 +23,13 @@ const ProductSchema = new Schema({
         required: true
     },
     image: {
-        type: URL,
+        type: String,
         required: true
     }
 })
 
 
-AccessoriesSchema.methods.toJson = function () {
+ProductSchema.methods.toJson = function () {
     return {
       _id: this._id,
       price: this.price,

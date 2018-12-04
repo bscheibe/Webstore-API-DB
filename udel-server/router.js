@@ -1,5 +1,5 @@
 const AuthenticationController = require('./controllers/authentication'),  
-const StorageController = require('./controllers/storage'),
+      StorageController = require('./controllers/storage'),
       express = require('express'),
       passportService = require('./security/passport');
      
