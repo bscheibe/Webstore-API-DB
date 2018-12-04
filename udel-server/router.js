@@ -18,6 +18,10 @@ module.exports = function(app) {
 
     otherRoutes.get('/info',passportService.requireAuth,function(req,res,next){
         res.json({user: req.user.toJson()})});
+    
+    otherRoutes.get('/checkout',passportService.requireAuth,function(req,res,next){
+        res.json({user: req.user.toJson()})});
+        
     apiRoutes.use('/stuff',otherRoutes);
     app.use('/api', apiRoutes);
 };
