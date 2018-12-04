@@ -19,4 +19,23 @@ ncu -u
 ng update @angular/cli
 npm install
 
+http://localhost:3000/api/auth/register
+Headers:
+Content-Type application/json
+Body:
+{
+	"email": "email@email.com",
+	"firstName": "greg",
+	"lastName": "silver",
+	"password": "password1",
+	"clientid": 1
+}
 
+localhost:3000/api/auth/login
+Headers:
+Content-Type application/json
+Body:
+{
+	"email": "email@email.com",
+	"password": "password1"
+}
