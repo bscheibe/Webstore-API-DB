@@ -1,17 +1,14 @@
 // 1. Run database
-cd to security-server subdirectory
+cd to udel-server subdirectory
 npm i
 mongod
 
 // 2. Then, run api
-cd to test-api
-npm install
+cd to udel-api in a second terminal
 node index.js
 
 // 3. Open postman and run this get request
-localhost:3001/api/test
-
-It wil 
+localhost:3000/api/test
 
 // In case you run into angular issues.
 npm install -g npm-check-updates
