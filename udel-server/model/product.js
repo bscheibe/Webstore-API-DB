@@ -38,4 +38,4 @@ AccessoriesSchema.methods.toJson = function () {
       description: this.description
     }
   }
-  module.exports = mongoose.model('Accessories', AccessoriesSchema);
+  module.exports = mongoose.model('Product', ProductSchema);

@@ -1,6 +1,11 @@
 
-Product = require('../model/product'),
-config = require('../config/config');
+Product = require('../model/product');
+
+exports.test=function(req,res,next){
+	res.status(200).json({
+        test: 'Good to go'
+	});
+}
 
 exports.clothing=function(req,res,next){
     const query = req.query || {};

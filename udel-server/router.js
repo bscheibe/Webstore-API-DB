@@ -1,4 +1,5 @@
 const AuthenticationController = require('./controllers/authentication'),  
+const ProductController = require('./controllers/product'),
       express = require('express'),
       passportService = require('./security/passport');
      
@@ -15,6 +16,11 @@ module.exports = function(app) {
     authRoutes.post('/login', AuthenticationController.login);
     // /api/auth/authorize
     authRoutes.get('/authorize',passportService.requireAuth,AuthenticationController.authorize);
+    // Our added routes for each catagory.
+    apiRoutes.get('/clothing', ProductController.clothing);
+    apiRoutes.get('/accessories', ProductController.accessories);
+    apiRoutes.get('/supplies', ProductController.supplies);
+    apiRoutes.get('/test', ProductController.test);
 
     otherRoutes.get('/info',passportService.requireAuth,function(req,res,next){
         res.json({user: req.user.toJson()})});
