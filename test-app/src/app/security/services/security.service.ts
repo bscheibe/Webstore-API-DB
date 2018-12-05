@@ -2,6 +2,8 @@ import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Observable, Subject } from 'rxjs';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class SecurityService {
