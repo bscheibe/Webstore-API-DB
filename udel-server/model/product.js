@@ -31,11 +31,13 @@ const ProductSchema = new Schema({
 
 ProductSchema.methods.toJson = function () {
     return {
-      _id: this._id,
+      catagory: this.catagory,
       price: this.price,
       quantity: this.quantity,
       productName: this.productName,
-      description: this.description
+      description: this.description,
+      image: this.image
     }
   }
+  
   module.exports = mongoose.model('Product', ProductSchema);

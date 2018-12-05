@@ -21,6 +21,7 @@ module.exports = function(app) {
     apiRoutes.get('/accessories', StorageController.accessories);
     apiRoutes.get('/supplies', StorageController.supplies);
     apiRoutes.get('/test', StorageController.test);
+    apiRoutes.get('/import', StorageController.importing);
 
     otherRoutes.get('/info',passportService.requireAuth,function(req,res,next){
         res.json({user: req.user.toJson()})});
