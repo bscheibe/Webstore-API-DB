@@ -46,13 +46,13 @@ exports.returnusers=function(req,res,next){
 };
 
 exports.transaction=function(req,res,next){
-    const balance = req.body.balance;
-
-    User.update(function (err, user) {
-        if (err) { return next(err); }
-        let userInfo = user.toJson();
-        userInfo.balance = user.balance - balance;
-    });
+    const balance = req.user.balance;
+    const cost = req.body.balance;
+    User.findByIdAndUpdate(
+        req.user.toJson(),
+        balance = balance - cost
+    );
+    res.json({user: req.user.toJson()})
     res.status(200).json({
         user
     });
