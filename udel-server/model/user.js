@@ -9,6 +9,10 @@ const UserSchema = new Schema({
     unique: true,
     required: true
   },
+  balance: {
+    type: Number,
+    required: true
+  },
   password: {
     type: String,
     required: true
@@ -54,6 +58,7 @@ UserSchema.methods.comparePassword = function (candidatePassword, cb) {
 UserSchema.methods.toJson = function () {
   return {
     _id: this._id,
+    balance: this.balance,
     firstName: this.profile.firstName,
     lastName: this.profile.lastName,
     email: this.email,

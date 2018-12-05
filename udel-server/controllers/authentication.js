@@ -14,10 +14,10 @@ function generateToken(user) {
 //========================================
 exports.login = function (req, res, next) {
     User.findOne({ email: req.body.email }, function (err, user) {
-        if (err) { return res.status(400).json({ error: "bad data" }); }
+        if (err) { return res.status(400).json({ error: "bad email" }); }
         if (!user) { return res.status(400).json({ error: 'Your login details could not be verified. Please try again.' }); }
         user.comparePassword(req.body.password, function (err, isMatch) {
-            if (err) { return res.status(400).json({ error: "bad data" }); }
+            if (err) { return res.status(400).json({ error: "bad password" }); }
             if (!isMatch) { return res.status(400).json({ error: 'Your login details could not be verified. Please try again.' }); }
 
                 let userInfo = user.toJson();
@@ -45,6 +45,19 @@ exports.returnusers=function(req,res,next){
 	});
 };
 
+exports.transaction=function(req,res,next){
+    const balance = req.body.balance;
+
+    User.update(function (err, user) {
+        if (err) { return next(err); }
+        let userInfo = user.toJson();
+        userInfo.balance = user.balance - balance;
+    });
+    res.status(200).json({
+        user
+    });
+};
+
 exports.authorize = function (req, res, next) {
     return res.status(200).json({
         validated: true
@@ -61,6 +74,7 @@ exports.register = function (req, res, next) {
     const lastName = req.body.lastName;
     const password = req.body.password;
     const clientid = req.body.clientid;
+    const balance = 1000;
     let authAPIs = req.body.authAPIs;
 
     if (!authAPIs)
@@ -103,6 +117,7 @@ exports.register = function (req, res, next) {
 
         } else {
             let user = new User({
+                balance: balance,
                 email: email,
                 password: password,
                 provider: 'local',
