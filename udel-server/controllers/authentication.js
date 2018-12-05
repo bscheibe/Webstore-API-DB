@@ -29,13 +29,28 @@ exports.login = function (req, res, next) {
     });
 }
 
+exports.returnusers=function(req,res,next){
+    const query = req.query || {};
 
+	User.find({
+	}, function(err, users) {
+		if (err) {
+			return next(err);
+		} else {
+			console.log(users);
+			res.status(200).json({
+				users
+			});
+		}
+	});
+};
 
 exports.authorize = function (req, res, next) {
     return res.status(200).json({
         validated: true
     })
 }
+
 //========================================
 // Registration Route
 //========================================

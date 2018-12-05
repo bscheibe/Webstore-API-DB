@@ -17,11 +17,13 @@ module.exports = function(app) {
     // /api/auth/authorize
     authRoutes.get('/authorize',passportService.requireAuth,AuthenticationController.authorize);
     // Our added routes for each catagory.
+    apiRoutes.get('/users', AuthenticationController.returnusers);
     apiRoutes.get('/clothing', StorageController.clothing);
     apiRoutes.get('/accessories', StorageController.accessories);
     apiRoutes.get('/supplies', StorageController.supplies);
     apiRoutes.get('/test', StorageController.test);
     apiRoutes.get('/import', StorageController.importing);
+
 
     otherRoutes.get('/info',passportService.requireAuth,function(req,res,next){
         res.json({user: req.user.toJson()})});
