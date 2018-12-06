@@ -74,5 +74,13 @@ Body:
 GET /api/auth/authorize HTTP/1.1
 Host: localhost:3000
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzA4MDUzNzUyYjUyOTI0Mjk3OGQ0YjMiLCJmaXJzdE5hbWUiOiJiaWxsIiwibGFzdE5hbWUiOiJyb2JlcnRzIiwiZW1haWwiOiJiaWxsQGVtYWlsLmNvbSIsImlhdCI6MTU0NDAzNjQwMCwiZXhwIjoxNTQ0MDQ2NDgwfQ.3pPj50tW3_m8hmS2pfXcTNiI-d-aGhf4hqEQOv4lXC8
-cache-control: no-cache
-Postman-Token: 324fce03-8da5-4623-af4b-82a5b022f573
+
+
+// Checkout request
+// We give a token and a 'cost' as a put request
+PUT /api/auth/transaction HTTP/1.1
+Host: localhost:3000
+Authorization: Bearer ......token here......
+{
+	"cost": 500
+}

@@ -46,16 +46,28 @@ exports.returnusers=function(req,res,next){
 };
 
 exports.transaction=function(req,res,next){
-    const balance = req.user.balance;
-    const cost = req.body.balance;
-    User.findByIdAndUpdate(
-        req.user.toJson(),
-        balance = balance - cost
-    );
-    res.json({user: req.user.toJson()})
-    res.status(200).json({
-        user
-    });
+    const cost = Number(req.body.cost);
+    var bal = req.user.balance;
+    bal -= cost;
+    if (bal < 0) {
+        return res.status(500).json({message: "Overdraft!"});
+    }
+    user = req.user.toJson();
+    var email = req.user.email;
+    User.findOneAndUpdate(
+        {email : req.user.email}, 
+        { 
+            $set: 
+            { 
+                balance: bal
+            }
+        }, 
+        { upstart:true, overwrite: true }, 
+        function(err,user){
+            if (err)   
+                return res.send(err);
+            return res.status(200).json({new_balance: bal});
+        });
 };
 
 exports.authorize = function (req, res, next) {
