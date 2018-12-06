@@ -16,21 +16,25 @@ module.exports = function(app) {
     authRoutes.post('/login', AuthenticationController.login);
     // /api/auth/authorize
     authRoutes.get('/authorize',passportService.requireAuth,AuthenticationController.authorize);
-    // Our added routes for each catagory.
-    authRoutes.put('/transaction', passportService.requireAuth, AuthenticationController.transaction);
-    apiRoutes.get('/users', AuthenticationController.returnusers);
 
-    // Record manipulation.
+    // Our Routes //
+    // Test routes to check for regestering users.
+    apiRoutes.get('/users', AuthenticationController.returnusers);
+    apiRoutes.get('/test', StorageController.test);
+
+    // Return a JSON array of the product records in each catagory.
     apiRoutes.get('/clothing', StorageController.clothing);
     apiRoutes.get('/accessories', StorageController.accessories);
     apiRoutes.get('/supplies', StorageController.supplies);
-    apiRoutes.get('/test', StorageController.test);
+
+    // Insert a JSON object into the database as a record.
     apiRoutes.post('/import', StorageController.importing);
 
+    // Secure checkout transaction. Expects a token that is returned from a login/regestration.
+    authRoutes.put('/transaction', passportService.requireAuth, AuthenticationController.transaction);
+    // End Our Routes //
+
     otherRoutes.get('/info',passportService.requireAuth,function(req,res,next){
-        res.json({user: req.user.toJson()})});
-    
-    otherRoutes.get('/checkout',passportService.requireAuth,function(req,res,next){
         res.json({user: req.user.toJson()})});
         
     apiRoutes.use('/stuff',otherRoutes);
