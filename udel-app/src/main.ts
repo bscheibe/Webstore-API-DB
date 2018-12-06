@@ -8,5 +8,11 @@ if (environment.production) {
   enableProdMode();
 }
 
+var cartitems = [];
+
+function addToCart(arr, productName, cost){
+  cartitems.push({productName, cost});
+}
+
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
