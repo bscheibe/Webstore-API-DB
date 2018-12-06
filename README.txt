@@ -6,7 +6,7 @@ npm i
 mongod
 
 // 2. Then, run api
-cd to udel-api in a second terminal
+cd to udel-server in a second terminal
 node index.js
 
 // 3. Open postman and run this get request
